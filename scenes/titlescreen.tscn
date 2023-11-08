@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2lgv3i4npsb5"]
+
+[ext_resource type="Script" path="res://scripts/titlescreen.gd" id="1_33jr7"]
+[ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="2_3t4va"]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_33jr7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -84.0
+offset_top = -83.0
+offset_right = 85.0
+offset_bottom = -57.0
+text = "This is the title screen"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -160.0
+offset_top = 35.0
+offset_right = 161.0
+offset_bottom = 87.0
+text = "That's basically it
+(this is just to test if the server is running)"
+horizontal_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-301, -117)
+texture = ExtResource("2_3t4va")
