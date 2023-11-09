@@ -19,4 +19,18 @@
 ---
 ### dev stuff
 
-this is where we'll put dev/design doc stuff
+metroid-style level layouts (platforming with doors)
+there are some enemies about the levels (turrets, melee guys)
+there are also gauntlet-style rooms where a bunch of enemies show up and you have to kill them all at once
+the object of each level is to reach an end room, clear a hard gauntlet and then exit the level
+
+the player is equipped with a melee weapon upon entering the first level
+they have the ability to parry enemy projectiles and attacks
+doing so successfully grants the player a number of points (just gonna call them energy for now)
+the more energy the player has, the faster they move and the harder they hit.
+higher energy melee attacks deal greater damage and knockback (can send enemies flying through other enemies and knock them back too)
+energy slowly decays over time
+
+other tools can be found thoughout the levels, usually after gauntlet rooms
+these may be weapons (ie. a ranged weapon), other combat tools (ie. a shield or some other defensive option) or upgrades to base abilities (ie. double jump)
+the combat tools cost energy to use
