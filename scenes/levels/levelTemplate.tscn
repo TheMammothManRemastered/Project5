@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmu1tejhc7420"]
+[gd_scene load_steps=4 format=3 uid="uid://ctvlsdqtnt5eg"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_6apok"]
-[ext_resource type="PackedScene" uid="uid://d1dq2m5uc4t7d" path="res://scenes/levels/rooms/roomTemplate.tscn" id="2_i6bre"]
+[ext_resource type="PackedScene" uid="uid://d1dq2m5uc4t7d" path="res://scenes/levels/rooms/RoomTemplate.tscn" id="2_i6bre"]
+[ext_resource type="PackedScene" uid="uid://b5qy2qdj2cfm2" path="res://scenes/levels/rooms/RoomTemplate2.tscn" id="3_07jar"]
 
 [node name="LevelTemplate" type="Node"]
 script = ExtResource("1_6apok")
@@ -10,3 +11,5 @@ spawn_room = "res://scenes/levels/rooms/roomTemplate.tscn"
 [node name="Rooms" type="Node" parent="."]
 
 [node name="RoomTemplate" parent="Rooms" instance=ExtResource("2_i6bre")]
+
+[node name="RoomTemplate2" parent="Rooms" instance=ExtResource("3_07jar")]
