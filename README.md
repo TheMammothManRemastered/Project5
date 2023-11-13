@@ -34,3 +34,21 @@ energy slowly decays over time
 other tools can be found thoughout the levels, usually after gauntlet rooms
 these may be weapons (ie. a ranged weapon), other combat tools (ie. a shield or some other defensive option) or upgrades to base abilities (ie. double jump)
 the combat tools cost energy to use
+
+### Levels, Rooms and Doors
+Levels are a collection of packed room scenes and information about each room in the level, as well as information about the player going through the level
+Rooms are the actual scenes with geometry and enemy spawnpoints and doors and the like
+Rooms have something called a registry, which contains information about all of their objects and themselves
+a room's registry contains:
+	a room's name
+	an ordered list of all of its doors (sorted by door ID. this allows for array access when switching levels, which is faster)
+	a list of all of its enemy spawnpoints
+	a list of all other spawnpoints
+Room registries are echoed in the Level they belong to, which is loaded in Autoload
+The level has a list of these registries sorted by room ID
+Doors are scenes that are instanciated in rooms
+They have IDs, a target room ID and a target door ID for that room
+
+how are levels loaded?
+there is a thing in Autoload, the LevelManager
+this thing holds the current Level

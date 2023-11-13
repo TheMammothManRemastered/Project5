@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="FinalProject"
-run/main_scene="res://scenes/titlescreen.tscn"
+run/main_scene="res://scenes/objects/titlescreen.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://assets/icon.svg"
+
+[autoload]
+
+LevelManager="*res://scripts/level_manager.gd"
 
 [input]
 
@@ -39,6 +43,18 @@ player_left={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":-1.0,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Level Geometry"
+2d_physics/layer_2="Doors"
+2d_physics/layer_3="Corpses"
+2d_physics/layer_4="Pickups"
+2d_physics/layer_8="Player"
+2d_physics/layer_9="Parry"
+2d_physics/layer_10="Player Weapon"
+2d_physics/layer_16="Enemy"
+2d_physics/layer_17="Enemy Weapon"
 
 [rendering]
 

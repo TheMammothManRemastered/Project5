@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2lgv3i4npsb5"]
 
-[ext_resource type="Script" path="res://scripts/titlescreen.gd" id="1_33jr7"]
-[ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="2_3t4va"]
+[ext_resource type="Script" path="res://scripts/titlescreen.gd" id="1_ge7f0"]
+[ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="2_mb5ci"]
 
 [node name="TitleScreen" type="Node2D"]
-script = ExtResource("1_33jr7")
+script = ExtResource("1_ge7f0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -27,13 +27,21 @@ horizontal_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-301, -117)
-texture = ExtResource("2_3t4va")
+texture = ExtResource("2_mb5ci")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 65.0
 offset_top = 183.0
 offset_right = 147.0
 offset_bottom = 214.0
-text = "load level"
+text = "load test level"
 
-[connection signal="pressed" from="Button" to="." method="load_level"]
+[node name="Button2" type="Button" parent="."]
+offset_left = 78.0
+offset_top = 228.0
+offset_right = 173.0
+offset_bottom = 259.0
+text = "load level 1"
+
+[connection signal="pressed" from="Button" to="." method="load_test_level"]
+[connection signal="pressed" from="Button2" to="." method="load_level_one"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1dq2m5uc4t7d"]
+
+[ext_resource type="Script" path="res://scripts/room.gd" id="1_6tm61"]
+[ext_resource type="PackedScene" uid="uid://c1ywll5lg4sb2" path="res://scenes/objects/door.tscn" id="2_24a5e"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u2f7g"]
+distance = -232.0
+
+[node name="RoomTemplate" type="Node2D"]
+script = ExtResource("1_6tm61")
+
+[node name="Doors" type="Node" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource("2_24a5e")]
+position = Vector2(-248, 192)
+
+[node name="EnemySpanwers" type="Node" parent="."]
+
+[node name="PickupSpawners" type="Node" parent="."]
+
+[node name="PlayerSpawnPoint" type="Node2D" parent="."]
+editor_description = "This is the default player spawn position used if player_spawn_ID is -1."
+
+[node name="--------------------------------" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_u2f7g")

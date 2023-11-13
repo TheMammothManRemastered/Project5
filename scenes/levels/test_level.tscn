@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bro3u48hl0sf4"]
 
-[ext_resource type="PackedScene" uid="uid://bjuhyjk7ymcfy" path="res://scenes/player.tscn" id="1_7u3ff"]
-[ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="2_2yydx"]
+[ext_resource type="PackedScene" uid="uid://bjuhyjk7ymcfy" path="res://scenes/objects/player.tscn" id="1_3ekii"]
+[ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="2_vrlqb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bixm8"]
 size = Vector2(1808, 26)
@@ -27,9 +27,9 @@ size = Vector2(2061, 90)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k34yx"]
 size = Vector2(57, 824)
 
-[node name="Level1" type="Node2D"]
+[node name="TestLevel" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_7u3ff")]
+[node name="Player" parent="." instance=ExtResource("1_3ekii")]
 position = Vector2(0, -280)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -69,39 +69,39 @@ shape = SubResource("RectangleShape2D_k34yx")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(12, 26)
 scale = Vector2(15.0625, 0.5625)
-texture = ExtResource("2_2yydx")
+texture = ExtResource("2_vrlqb")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(-917, -528)
 scale = Vector2(1, 8.875)
-texture = ExtResource("2_2yydx")
+texture = ExtResource("2_vrlqb")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 position = Vector2(919, -532)
 scale = Vector2(1, 8.9375)
-texture = ExtResource("2_2yydx")
+texture = ExtResource("2_vrlqb")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 position = Vector2(308, -528)
 scale = Vector2(3.0625, 0.375)
-texture = ExtResource("2_2yydx")
+texture = ExtResource("2_vrlqb")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-408, -416)
 scale = Vector2(3, 0.375)
-texture = ExtResource("2_2yydx")
+texture = ExtResource("2_vrlqb")
 
 [node name="Icon2" type="Sprite2D" parent="."]
 position = Vector2(308, -776)
 scale = Vector2(3.1875, 0.75)
-texture = ExtResource("2_2yydx")
+texture = ExtResource("2_vrlqb")
 
 [node name="Icon3" type="Sprite2D" parent="."]
 position = Vector2(124, -1152)
 scale = Vector2(18.0625, 0.875)
-texture = ExtResource("2_2yydx")
+texture = ExtResource("2_vrlqb")
 
 [node name="Icon4" type="Sprite2D" parent="."]
 position = Vector2(664, -532)
 scale = Vector2(0.5, 6.4375)
-texture = ExtResource("2_2yydx")
+texture = ExtResource("2_vrlqb")

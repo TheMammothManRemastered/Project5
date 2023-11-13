@@ -4,5 +4,8 @@ extends Node2D
 func _process(delta):
 	$Icon.rotation_degrees += 1
 
-func load_level():
-	get_tree().change_scene_to_file("res://scenes/level1.tscn")
+func load_test_level():
+	get_tree().change_scene_to_file("res://scenes/levels/test_level.tscn")
+
+func load_level_one():
+	LevelManager.load_level("res://scenes/levels/levelTemplate.tscn")
