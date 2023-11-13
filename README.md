@@ -19,6 +19,29 @@
 ---
 ### dev stuff
 
+#### TODO (and/or what's already done):
+Visuals:
+	- [ ] Tile Atlas
+	- [ ] Player sprite(s)
+	- [ ] Player animation(s)
+	- [ ] Enemy sprite(s)
+	- [ ] Enemy animation(s)
+Code/implementation:
+	- [ ] Full Level Framework
+	- [X] Functioning doors
+	- [ ] Functioning enemy spawners
+	- [ ] Functioning pickup spawners
+	- [ ] Functioning ranged enemy
+	- [ ] Functioning melee enemy
+	- [ ] Fully functioning player
+	- [ ] Levels outside the template level
+	- [ ] Real title screen
+	- [ ] Level select screen (optional)
+Other:
+	- [ ] Audio
+
+#### design
+
 metroid-style level layouts (platforming with doors)
 there are some enemies about the levels (turrets, melee guys)
 there are also gauntlet-style rooms where a bunch of enemies show up and you have to kill them all at once
@@ -35,7 +58,7 @@ other tools can be found thoughout the levels, usually after gauntlet rooms
 these may be weapons (ie. a ranged weapon), other combat tools (ie. a shield or some other defensive option) or upgrades to base abilities (ie. double jump)
 the combat tools cost energy to use
 
-### Levels, Rooms and Doors
+#### Levels, Rooms and Doors
 Levels are a collection of packed room scenes and information about each room in the level, as well as information about the player going through the level
 Rooms are the actual scenes with geometry and enemy spawnpoints and doors and the like
 Rooms have something called a registry, which contains information about all of their objects and themselves
