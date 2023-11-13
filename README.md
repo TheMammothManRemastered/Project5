@@ -20,13 +20,13 @@
 ### dev stuff
 
 #### TODO (and/or what's already done):
-Visuals:
+##### Visuals:
 	- [ ] Tile Atlas
 	- [ ] Player sprite(s)
 	- [ ] Player animation(s)
 	- [ ] Enemy sprite(s)
 	- [ ] Enemy animation(s)
-Code/implementation:
+##### Code/implementation:
 	- [ ] Full Level Framework
 	- [X] Functioning doors
 	- [ ] Functioning enemy spawners
@@ -37,7 +37,7 @@ Code/implementation:
 	- [ ] Levels outside the template level
 	- [ ] Real title screen
 	- [ ] Level select screen (optional)
-Other:
+##### Other:
 	- [ ] Audio
 
 #### design
