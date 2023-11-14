@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhpxeiiy3fdtc"]
+
+[ext_resource type="PackedScene" uid="uid://d1dq2m5uc4t7d" path="res://scenes/levels/rooms/RoomTemplate.tscn" id="1_v1sqg"]
+[ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="2_caifx"]
+[ext_resource type="PackedScene" uid="uid://c1ywll5lg4sb2" path="res://scenes/objects/door.tscn" id="2_rkwee"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y0h3f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqvba"]
+size = Vector2(64, 88)
+
+[node name="roomExample2" instance=ExtResource("1_v1sqg")]
+
+[node name="Door" parent="Doors" index="0" instance=ExtResource("2_rkwee")]
+position = Vector2(-168, 216)
+target_room_ID = 0
+target_door_ID = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="5"]
+position = Vector2(-323.443, 53.3546)
+collision_mask = 98948
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(323.443, 202.645)
+shape = SubResource("WorldBoundaryShape2D_y0h3f")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" index="1"]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(335.443, 266.645)
+scale = Vector2(9.8125, 1)
+texture = ExtResource("2_caifx")
+
+[node name="Area2D" type="Area2D" parent="." index="6"]
+position = Vector2(392, 216)
+collision_layer = 2
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_pqvba")
+
+[connection signal="body_entered" from="Area2D" to="." method="trigger_change_level"]

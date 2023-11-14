@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1imtpvvwh4y4"]
+
+[ext_resource type="PackedScene" uid="uid://d1dq2m5uc4t7d" path="res://scenes/levels/rooms/RoomTemplate.tscn" id="1_u2rfj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lrhqk"]
+distance = -344.0
+
+[node name="roomExample3" instance=ExtResource("1_u2rfj")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+shape = SubResource("WorldBoundaryShape2D_lrhqk")
+
+[node name="Label" type="Label" parent="." index="6"]
+offset_left = -24.0
+offset_top = 208.0
+offset_right = 16.0
+offset_bottom = 231.0
+text = "this is level 2 that's all folks"

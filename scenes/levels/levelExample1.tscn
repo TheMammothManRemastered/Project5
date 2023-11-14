@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxooq26cewqvu"]
+
+[ext_resource type="PackedScene" uid="uid://ctvlsdqtnt5eg" path="res://scenes/levels/levelTemplate.tscn" id="1_e7jbu"]
+[ext_resource type="PackedScene" uid="uid://djsyodu7h6hcl" path="res://scenes/levels/rooms/roomExample1.tscn" id="2_5plk0"]
+[ext_resource type="PackedScene" uid="uid://dhpxeiiy3fdtc" path="res://scenes/levels/rooms/roomExample2.tscn" id="3_17twr"]
+
+[node name="LevelExample1" instance=ExtResource("1_e7jbu")]
+spawn_room = "res://scenes/levels/rooms/roomExample1.tscn"
+
+[node name="roomExample1" parent="Rooms" index="0" instance=ExtResource("2_5plk0")]
+
+[node name="roomExample2" parent="Rooms" index="1" instance=ExtResource("3_17twr")]

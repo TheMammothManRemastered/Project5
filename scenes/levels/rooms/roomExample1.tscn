@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://djsyodu7h6hcl"]
+
+[ext_resource type="PackedScene" uid="uid://d1dq2m5uc4t7d" path="res://scenes/levels/rooms/RoomTemplate.tscn" id="1_mukf8"]
+[ext_resource type="PackedScene" uid="uid://c1ywll5lg4sb2" path="res://scenes/objects/door.tscn" id="2_mcbgw"]
+[ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="3_riqio"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7mwat"]
+distance = -248.0
+
+[node name="roomExample1" instance=ExtResource("1_mukf8")]
+
+[node name="Door" parent="Doors" index="0" instance=ExtResource("2_mcbgw")]
+position = Vector2(-320, 208)
+target_room_ID = 1
+target_door_ID = 0
+
+[node name="Door2" parent="Doors" index="1" instance=ExtResource("2_mcbgw")]
+position = Vector2(-64, -240)
+target_room_ID = 0
+target_door_ID = 0
+
+[node name="PlayerSpawnPoint" parent="." index="3"]
+position = Vector2(0, 40)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+shape = SubResource("WorldBoundaryShape2D_7mwat")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" index="1"]
+position = Vector2(8, 300)
+scale = Vector2(7.4375, 0.8125)
+texture = ExtResource("3_riqio")

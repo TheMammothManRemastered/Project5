@@ -17,16 +17,3 @@ func _on_area_2d_body_entered(body):
 	print("body enetered")
 	if (body.name == "Player"):
 		player_entered_door.emit(target_room_ID, target_door_ID)
-
-func get_registry_entry():
-	var out = {
-		"locked" : locked,
-		"target_room_ID" : target_room_ID,
-		"target_door_ID" : target_door_ID
-	}
-	return out
-
-func apply_registry(r_entry):
-	locked = r_entry["locked"]
-	target_room_ID = r_entry["target_room_ID"]
-	target_door_ID = r_entry["target_door_ID"]
