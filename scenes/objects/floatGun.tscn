@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvsrld0msfx23"]
+
+[ext_resource type="Texture2D" uid="uid://b5pcxngjhr0ob" path="res://assets/roundcircle.png" id="1_nb6w7"]
+[ext_resource type="Script" path="res://scripts/floatgun.gd" id="1_rpw7k"]
+[ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="3_m28q5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mmvgn"]
+radius = 29.0172
+
+[node name="FloatGun" type="CharacterBody2D"]
+collision_layer = 32768
+collision_mask = 641
+motion_mode = 1
+script = ExtResource("1_rpw7k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0.45098, 1)
+scale = Vector2(0.0375, 0.0375)
+texture = ExtResource("1_nb6w7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mmvgn")
+
+[node name="GunPivot" type="Node2D" parent="."]
+
+[node name="GunSpawn" type="Node2D" parent="GunPivot"]
+position = Vector2(43, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="GunPivot/GunSpawn"]
+scale = Vector2(0.0625, 0.0625)
+texture = ExtResource("3_m28q5")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwispbqmeran4"]
+
+[ext_resource type="Script" path="res://scripts/enemyBullet.gd" id="1_n03mq"]
+[ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="1_qfcv6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqj3i"]
+size = Vector2(26, 26)
+
+[node name="EnemyBullet" type="CharacterBody2D"]
+collision_layer = 65536
+collision_mask = 385
+script = ExtResource("1_n03mq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.203125, 0.203125)
+texture = ExtResource("1_qfcv6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sqj3i")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

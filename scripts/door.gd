@@ -15,5 +15,5 @@ func _ready():
 
 func _on_area_2d_body_entered(body):
 	print("body enetered")
-	if (body.name == "Player"):
+	if (not locked and body.name == "Player"):
 		player_entered_door.emit(target_room_ID, target_door_ID)

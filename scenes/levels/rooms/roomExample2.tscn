@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhpxeiiy3fdtc"]
+[gd_scene load_steps=7 format=3 uid="uid://dhpxeiiy3fdtc"]
 
 [ext_resource type="PackedScene" uid="uid://d1dq2m5uc4t7d" path="res://scenes/levels/rooms/RoomTemplate.tscn" id="1_v1sqg"]
 [ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="2_caifx"]
 [ext_resource type="PackedScene" uid="uid://c1ywll5lg4sb2" path="res://scenes/objects/door.tscn" id="2_rkwee"]
+[ext_resource type="PackedScene" uid="uid://dl0ueqiuiot8f" path="res://scenes/objects/spawner.tscn" id="3_jbn6g"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y0h3f"]
 
@@ -12,12 +13,17 @@ size = Vector2(64, 88)
 [node name="roomExample2" instance=ExtResource("1_v1sqg")]
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("2_rkwee")]
-position = Vector2(-168, 216)
+position = Vector2(-936, 216)
 target_room_ID = 0
 target_door_ID = 1
 
 [node name="ExitPoint" parent="Doors/Door" index="0"]
-position = Vector2(-144, 0)
+position = Vector2(-128, 0)
+
+[node name="Spawner" parent="EnemySpanwers" index="0" instance=ExtResource("3_jbn6g")]
+position = Vector2(216, 96)
+to_spawn_scenename = "floatGun"
+recharge_time = 3
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="5"]
 position = Vector2(-323.443, 53.3546)
@@ -55,11 +61,18 @@ offset_right = 104.0
 offset_bottom = -64.0
 text = "Transition to level 2"
 
+[node name="Label3" type="Label" parent="Area2D" index="3"]
+offset_left = -160.0
+offset_top = 32.0
+offset_right = 194.0
+offset_bottom = 58.0
+text = "(There isn't anything in level 2, don't go there)"
+
 [node name="Label" type="Label" parent="." index="7"]
-offset_left = -232.0
-offset_top = 144.0
-offset_right = -111.0
-offset_bottom = 170.0
+offset_left = -992.0
+offset_top = 120.0
+offset_right = -871.0
+offset_bottom = 146.0
 text = "Door to Room 1"
 
 [node name="Label2" type="Label" parent="." index="8"]
@@ -68,6 +81,14 @@ offset_top = 32.0
 offset_right = 27.0
 offset_bottom = 58.0
 text = "Room 2"
+
+[node name="Label3" type="Label" parent="." index="9"]
+offset_left = 120.0
+offset_top = -24.0
+offset_right = 320.0
+offset_bottom = 28.0
+text = "Floating Gun spawns here
+on a 3 second timer"
 
 [connection signal="body_entered" from="Area2D" to="." method="trigger_change_level"]
 

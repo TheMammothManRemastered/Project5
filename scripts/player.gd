@@ -47,6 +47,7 @@ var curr_jumps : int = MAX_JUMPS
 var curr_action : character_action_t = character_action_t.IDLE
 var is_parrying : bool = false
 var use_parry_mult : bool = false
+var health : int = 20
 
 # constant 60 fps call rate, delta is constant
 func _physics_process(delta):
@@ -95,7 +96,11 @@ func _on_melee_parried(melee):
 	pass
 
 func _on_bullet_parried(bullet):
-	pass
+	bullet.parried()
+
+func _on_hit_by_bullet(damage, bvelocity, bposition):
+	health -= damage
+	# do knockback here if in the air
 
 # main movement processor
 func enhanced_movement(delta, x_axis : float, y_axis : float, jump_pressed : bool, jump_held : bool, parry_pressed : bool):

@@ -24,7 +24,8 @@ target_room_ID = 1
 target_door_ID = 0
 
 [node name="Door2" parent="Doors" index="1" instance=ExtResource("2_mcbgw")]
-position = Vector2(-720, -392)
+position = Vector2(112, -408)
+locked = true
 target_room_ID = 0
 target_door_ID = 0
 
@@ -72,10 +73,10 @@ scale = Vector2(5, 0.25)
 texture = ExtResource("3_riqio")
 
 [node name="Label" type="Label" parent="." index="6"]
-offset_left = -784.0
-offset_top = -472.0
-offset_right = -641.0
-offset_bottom = -446.0
+offset_left = 48.0
+offset_top = -504.0
+offset_right = 191.0
+offset_bottom = -478.0
 text = "Door from Room 2"
 
 [node name="Label2" type="Label" parent="." index="7"]
@@ -99,5 +100,12 @@ offset_top = 72.0
 offset_right = -37.0
 offset_bottom = 98.0
 text = "Room 1"
+
+[node name="Label5" type="Label" parent="." index="10"]
+offset_left = 48.0
+offset_top = -480.0
+offset_right = 202.0
+offset_bottom = -454.0
+text = "(locked on this side)"
 
 [editable path="Doors/Door2"]

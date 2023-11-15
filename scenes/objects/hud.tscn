@@ -31,3 +31,10 @@ Space, A Button (xbox) - Jump
 Lstick into Wall - Wallslide
 Jump while Wallsliding - Wall Jump
 Q, Y Button (xbox) - Parry"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 100.0
+offset_right = 119.0
+offset_bottom = 126.0
+text = "Health: 20"
