@@ -71,12 +71,14 @@ script = ExtResource("1_bl8b8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.625, 0.625)
 sprite_frames = SubResource("SpriteFrames_3sxq0")
-animation = &"land"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cxd0g")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
 
 [node name="HUD" parent="." instance=ExtResource("3_0snnm")]
 
@@ -87,3 +89,6 @@ hit_from_inside = true
 [node name="LeftWallCast" type="RayCast2D" parent="."]
 target_position = Vector2(-48, 0)
 hit_from_inside = true
+
+[node name="ParrySpawn" type="Node2D" parent="."]
+position = Vector2(18, 0)

@@ -1,3 +1,34 @@
-[gd_scene format=3 uid="uid://bhf4rhc81dacj"]
+[gd_scene load_steps=4 format=3 uid="uid://bhf4rhc81dacj"]
 
-[node name="parry" type="Node2D"]
+[ext_resource type="Script" path="res://scripts/parry.gd" id="1_dp7ma"]
+[ext_resource type="Texture2D" uid="uid://b5pcxngjhr0ob" path="res://assets/roundcircle.png" id="2_nu0k2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yqtjl"]
+radius = 57.1402
+
+[node name="Parry" type="Area2D"]
+collision_layer = 256
+collision_mask = 65536
+script = ExtResource("1_dp7ma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yqtjl")
+
+[node name="ActiveTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[node name="DespawnTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(3.05176e-05, 0)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("2_nu0k2")
+
+[connection signal="area_entered" from="." to="." method="on_melee_attack"]
+[connection signal="body_entered" from="." to="." method="on_bullet"]
+[connection signal="timeout" from="ActiveTimer" to="." method="_on_active_timer_timeout"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

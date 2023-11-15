@@ -17,6 +17,9 @@ const WALL_SLIDE_GRAVITY = 0.5
 const WALL_SLIDE_SPEEDCAP = 280
 const MAX_JUMPS = 2
 const FAST_FALL_FACTOR = 8
+const PARRY_SCENE = preload("res://scenes/objects/parry.tscn")
+const SWORD_SCENE = preload("res://scenes/objects/sword.tscn")
+const PARRY_MULT = 0.1
 
 enum facing_t {
 	LEFT = -1,
@@ -42,6 +45,8 @@ var curr_facing : facing_t = facing_t.RIGHT
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var curr_jumps : int = MAX_JUMPS
 var curr_action : character_action_t = character_action_t.IDLE
+var is_parrying : bool = false
+var use_parry_mult : bool = false
 
 # constant 60 fps call rate, delta is constant
 func _physics_process(delta):
@@ -51,15 +56,49 @@ func _physics_process(delta):
 	var jump_held = Input.is_action_pressed("player_jump")
 	var parry_pressed = Input.is_action_just_pressed("player_parry")
 	
+	# get facing
+	curr_facing = facing_t.RIGHT if x_axis >= 0.1 else curr_facing
+	curr_facing = facing_t.LEFT if x_axis <= -0.1 else curr_facing
+	
 	enhanced_movement(delta, x_axis, y_axis, jump_pressed, jump_held, parry_pressed)
+	
+	velocity.x *= PARRY_MULT if use_parry_mult else 1
+	velocity.y *= PARRY_MULT if use_parry_mult else 1
+	
+	if (parry_pressed):
+		try_parry()
 	
 	move_and_slide()
 
-# movement 
+# attempts to spawn a parry if possible
+func try_parry():
+	if is_parrying:
+		return
+	if ($ParrySpawn.position.x > 0 and curr_facing == facing_t.LEFT) or ($ParrySpawn.position.x < 0 and curr_facing == facing_t.RIGHT):
+		$ParrySpawn.position.x *= -1
+	var parry = PARRY_SCENE.instantiate()
+	$ParrySpawn.add_child(parry)
+	parry.parry_despawn.connect(_on_parry_despawn)
+	parry.parry_inactive.connect(_on_parry_inactive)
+	parry.melee_blocked.connect(_on_melee_parried)
+	parry.bullet_blocked.connect(_on_bullet_parried)
+	is_parrying = true
+	use_parry_mult = true
+
+func _on_parry_despawn():
+	is_parrying = false
+
+func _on_parry_inactive():
+	use_parry_mult = false
+
+func _on_melee_parried(melee):
+	pass
+
+func _on_bullet_parried(bullet):
+	pass
+
+# main movement processor
 func enhanced_movement(delta, x_axis : float, y_axis : float, jump_pressed : bool, jump_held : bool, parry_pressed : bool):
-	# get facing
-	curr_facing = facing_t.RIGHT if x_axis >= 0 else facing_t.LEFT
-	
 	# process base movement
 	var gravity_factor = 1
 	if (is_on_floor()):
@@ -95,7 +134,8 @@ func enhanced_movement(delta, x_axis : float, y_axis : float, jump_pressed : boo
 		velocity.y += gravity * delta * gravity_factor
 	if (is_on_wall_via_raycast() and velocity.y > WALL_SLIDE_SPEEDCAP and is_facing_into_colliding_wall(x_axis)):
 		velocity.y = WALL_SLIDE_SPEEDCAP
-	
+
+# horizontal movement on the ground
 func em_grounded_movement(x_axis : float):
 	const DASH_THRESH = 0.8
 	const DEADZONE = 0.1
@@ -116,6 +156,7 @@ func em_grounded_movement(x_axis : float):
 	if (absf(velocity.x) > cap):
 		velocity.x = cap * curr_facing
 
+# horizontal movement in the air and fastfall. returns a number to be used as a gravity multiplier
 func em_air_movement(x_axis : float, y_axis : float):
 	# move horizontally as usual
 	# if the y axis is above the threshold, return a multiplier to be used for fastfall
@@ -135,12 +176,14 @@ func em_air_movement(x_axis : float, y_axis : float):
 		return FAST_FALL_FACTOR
 	return 1
 
+# jump and double jump
 func em_jump():
 	jumptime = 0
 	curr_jumps -= 1
 	
 	velocity.y = JUMP_VELOCITY
 
+# uses the player scene's raycasts to emulate is_on_wall and is_only_on_wall
 func is_on_wall_via_raycast(only_wall = false):
 	# this is necessary at all bc we can bounce off the wall for like a frame
 	# this is enough to make is_on_wall fail
@@ -154,12 +197,14 @@ func is_on_wall_via_raycast(only_wall = false):
 	else:
 		return on_wall
 
+# used in walljumping
 func is_facing_into_colliding_wall(x_axis):
 	if (not is_on_wall_via_raycast()):
 		return false
 	var wall_direction = facing_t.LEFT if $RightWallCast.is_colliding() else facing_t.RIGHT
 	return wall_direction != curr_facing and x_axis != 0
 
+# walljump processing
 func em_walljump():
 	velocity = WALLJUMP_VECTOR
 	velocity.x *= -1 * curr_facing

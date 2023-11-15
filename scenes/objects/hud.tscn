@@ -11,3 +11,23 @@ offset_top = 40.0
 offset_right = 209.0
 offset_bottom = 66.0
 text = "Currently Facing: LEFT"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 69.0
+offset_right = 187.0
+offset_bottom = 95.0
+text = "Parry Charged: YES"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 742.0
+offset_top = 442.0
+offset_right = 1126.0
+offset_bottom = 624.0
+text = "CONTROLS:
+A, D, Lstick Left/Right - Horizontal Movement
+S, Lstick Down while in Air - Fast Fall/Ground Slam
+Space, A Button (xbox) - Jump
+Lstick into Wall - Wallslide
+Jump while Wallsliding - Wall Jump
+Q, Y Button (xbox) - Parry"
