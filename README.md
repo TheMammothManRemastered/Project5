@@ -29,17 +29,20 @@
 ##### Code/implementation:
 	- [\] Full Level Framework (still need to do spawners, but the main hard bit is working)
 	- [X] Functioning doors
-	- [ ] Functioning enemy spawners
-	- [ ] Functioning pickup spawners
-	- [ ] Functioning ranged enemy
+	- [X] Functioning enemy spawners
+	- [X] Functioning pickup spawners
+	- [X] Functioning ranged enemy
 	- [ ] Functioning melee enemy
 	- [\] Fully functioning player (no weapons or parry yet)
-	- [ ] Parrying
+	- [X] Parrying
 	- [ ] Sword
 	- [ ] AWP
 	- [ ] Levels outside the template level
 	- [ ] Real title screen
 	- [ ] Level select screen (optional)
+ 	- [ ] Have bullets talk directly to the player. This way, when their spawner dies, they still can inflict their damage.
+  	- [ ] Despawn all bullets on room transition.
+   	- [ ] Cache room changes (the registry calls your name)
 ##### Other:
 	- [ ] Audio
 
