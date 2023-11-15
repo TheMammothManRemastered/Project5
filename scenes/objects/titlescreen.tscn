@@ -21,20 +21,12 @@ offset_left = -160.0
 offset_top = 35.0
 offset_right = 161.0
 offset_bottom = 87.0
-text = "That's basically it
-(this is just to test if the server is running)"
+text = "We'll make it nice later"
 horizontal_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-301, -117)
 texture = ExtResource("2_mb5ci")
-
-[node name="Button" type="Button" parent="."]
-offset_left = 65.0
-offset_top = 183.0
-offset_right = 147.0
-offset_bottom = 214.0
-text = "load test level (frame perfect jump)"
 
 [node name="Button2" type="Button" parent="."]
 offset_left = 78.0
@@ -43,5 +35,4 @@ offset_right = 173.0
 offset_bottom = 259.0
 text = "load example level 1"
 
-[connection signal="pressed" from="Button" to="." method="load_test_level"]
 [connection signal="pressed" from="Button2" to="." method="load_level_one"]

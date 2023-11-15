@@ -27,13 +27,16 @@
 	- [ ] Enemy sprite(s)
 	- [ ] Enemy animation(s)
 ##### Code/implementation:
-	- [ ] Full Level Framework
+	- [\] Full Level Framework (still need to do spawners, but the main hard bit is working)
 	- [X] Functioning doors
 	- [ ] Functioning enemy spawners
 	- [ ] Functioning pickup spawners
 	- [ ] Functioning ranged enemy
 	- [ ] Functioning melee enemy
-	- [ ] Fully functioning player
+	- [\] Fully functioning player (no weapons or parry yet)
+	- [ ] Parrying
+	- [ ] Sword
+	- [ ] AWP
 	- [ ] Levels outside the template level
 	- [ ] Real title screen
 	- [ ] Level select screen (optional)
@@ -41,6 +44,12 @@
 	- [ ] Audio
 
 #### design
+
+Note for Tyler:
+	hook the animations for the player up to the AnimatedSprite2D in scenes/objects/player.tscn
+	scale the AnimatedSprite2D and change the CollisionShape2D if the sizes are bad, but try to keep the height roughly the same
+	one of us can do a proper animation tree or whatever later if we want to have hitboxes change and shit, idk how to do that lol
+	-Will
 
 metroid-style level layouts (platforming with doors)
 there are some enemies about the levels (turrets, melee guys)

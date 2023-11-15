@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://dlmepxy2wjkk3"]
+[gd_scene load_steps=2 format=3 uid="uid://dlmepxy2wjkk3"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_5hrln"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_5hrln")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 39.0
+offset_top = 40.0
+offset_right = 209.0
+offset_bottom = 66.0
+text = "Currently Facing: LEFT"

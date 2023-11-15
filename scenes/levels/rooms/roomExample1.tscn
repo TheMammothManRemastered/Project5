@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://djsyodu7h6hcl"]
+[gd_scene load_steps=8 format=3 uid="uid://djsyodu7h6hcl"]
 
 [ext_resource type="PackedScene" uid="uid://d1dq2m5uc4t7d" path="res://scenes/levels/rooms/RoomTemplate.tscn" id="1_mukf8"]
 [ext_resource type="PackedScene" uid="uid://c1ywll5lg4sb2" path="res://scenes/objects/door.tscn" id="2_mcbgw"]
@@ -7,20 +7,32 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7mwat"]
 distance = -248.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b06cd"]
+size = Vector2(640, 32.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fmma"]
+size = Vector2(64, 696)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_un2h6"]
+size = Vector2(50, 707.5)
+
 [node name="roomExample1" instance=ExtResource("1_mukf8")]
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("2_mcbgw")]
-position = Vector2(-320, 208)
+position = Vector2(-744, 208)
 target_room_ID = 1
 target_door_ID = 0
 
 [node name="Door2" parent="Doors" index="1" instance=ExtResource("2_mcbgw")]
-position = Vector2(-64, -240)
+position = Vector2(-720, -392)
 target_room_ID = 0
 target_door_ID = 0
 
+[node name="ExitPoint" parent="Doors/Door2" index="0"]
+position = Vector2(0, 104)
+
 [node name="PlayerSpawnPoint" parent="." index="3"]
-position = Vector2(0, 40)
+position = Vector2(-128, -56)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="5"]
 
@@ -31,3 +43,61 @@ shape = SubResource("WorldBoundaryShape2D_7mwat")
 position = Vector2(8, 300)
 scale = Vector2(7.4375, 0.8125)
 texture = ExtResource("3_riqio")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" index="2"]
+position = Vector2(336, 136)
+shape = SubResource("RectangleShape2D_b06cd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" index="3"]
+position = Vector2(624, -400)
+shape = SubResource("RectangleShape2D_1fmma")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" index="4"]
+position = Vector2(392, -408)
+shape = SubResource("RectangleShape2D_un2h6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D" index="5"]
+position = Vector2(392, -408)
+scale = Vector2(0.375, 5.53125)
+texture = ExtResource("3_riqio")
+
+[node name="Sprite2D3" type="Sprite2D" parent="StaticBody2D" index="6"]
+position = Vector2(624, -400)
+scale = Vector2(0.5, 5.4375)
+texture = ExtResource("3_riqio")
+
+[node name="Sprite2D4" type="Sprite2D" parent="StaticBody2D" index="7"]
+position = Vector2(336, 136)
+scale = Vector2(5, 0.25)
+texture = ExtResource("3_riqio")
+
+[node name="Label" type="Label" parent="." index="6"]
+offset_left = -784.0
+offset_top = -472.0
+offset_right = -641.0
+offset_bottom = -446.0
+text = "Door from Room 2"
+
+[node name="Label2" type="Label" parent="." index="7"]
+offset_left = -816.0
+offset_top = 112.0
+offset_right = -695.0
+offset_bottom = 138.0
+text = "Door to Room 2"
+
+[node name="Label3" type="Label" parent="." index="8"]
+offset_left = -696.0
+offset_top = 192.0
+offset_right = -520.0
+offset_bottom = 244.0
+text = "<-- enter from this side
+please "
+
+[node name="Label4" type="Label" parent="." index="9"]
+offset_left = -96.0
+offset_top = 72.0
+offset_right = -37.0
+offset_bottom = 98.0
+text = "Room 1"
+
+[editable path="Doors/Door2"]
