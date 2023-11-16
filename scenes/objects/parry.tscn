@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5pcxngjhr0ob" path="res://assets/roundcircle.png" id="2_nu0k2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yqtjl"]
-radius = 57.1402
+radius = 20.0
 
 [node name="Parry" type="Area2D"]
 collision_layer = 256
@@ -25,7 +25,7 @@ autostart = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(3.05176e-05, 0)
-scale = Vector2(0.075, 0.075)
+scale = Vector2(0.026, 0.026)
 texture = ExtResource("2_nu0k2")
 
 [connection signal="area_entered" from="." to="." method="on_melee_attack"]

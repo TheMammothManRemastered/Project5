@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxkhe0v14be6"
-path="res://.godot/imported/groundTwo.png-197005055bdc4bec454ef22d64890f3d.ctex"
+uid="uid://cwurv7hdnvpji"
+path="res://.godot/imported/swordsmanJumpFix.png-3f66598849afacab6db8a8ca40ccb705.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://groundTwo.png"
-dest_files=["res://.godot/imported/groundTwo.png-197005055bdc4bec454ef22d64890f3d.ctex"]
+source_file="res://assets/player/swordsmanJumpFix.png"
+dest_files=["res://.godot/imported/swordsmanJumpFix.png-3f66598849afacab6db8a8ca40ccb705.ctex"]
 
 [params]
 

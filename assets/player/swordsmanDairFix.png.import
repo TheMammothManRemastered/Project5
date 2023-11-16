@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8oqeglqmlmrp"
-path="res://.godot/imported/templateSwordsmanAnimsPossible.png-2b888140f313ca21bcead6799ab3526a.ctex"
+uid="uid://bwebmtbcyiue6"
+path="res://.godot/imported/swordsmanDairFix.png-4f95996a3a24e01f57831183ab1d7cac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/templateSwordsmanAnimsPossible.png"
-dest_files=["res://.godot/imported/templateSwordsmanAnimsPossible.png-2b888140f313ca21bcead6799ab3526a.ctex"]
+source_file="res://assets/player/swordsmanDairFix.png"
+dest_files=["res://.godot/imported/swordsmanDairFix.png-4f95996a3a24e01f57831183ab1d7cac.ctex"]
 
 [params]
 

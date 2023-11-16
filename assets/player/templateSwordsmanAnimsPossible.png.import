@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwurv7hdnvpji"
-path="res://.godot/imported/swordsmanJumpFix.png-ee102fd00e79016d559408c51585b255.ctex"
+uid="uid://dd5kbeubqanos"
+path="res://.godot/imported/templateSwordsmanAnimsPossible.png-00b2fdf2c37b82183d601c88b185f778.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://swordsmanJumpFix.png"
-dest_files=["res://.godot/imported/swordsmanJumpFix.png-ee102fd00e79016d559408c51585b255.ctex"]
+source_file="res://assets/player/templateSwordsmanAnimsPossible.png"
+dest_files=["res://.godot/imported/templateSwordsmanAnimsPossible.png-00b2fdf2c37b82183d601c88b185f778.ctex"]
 
 [params]
 

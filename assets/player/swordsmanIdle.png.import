@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6t3iswyraweq"
-path="res://.godot/imported/swordsmanFairFix.png-32b678a1c6aee8619d40aa018a6bd9d6.ctex"
+uid="uid://bthlb64cuxugf"
+path="res://.godot/imported/swordsmanIdle.png-ca54ed3634e9813b554a5151df2b3938.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://swordsmanFairFix.png"
-dest_files=["res://.godot/imported/swordsmanFairFix.png-32b678a1c6aee8619d40aa018a6bd9d6.ctex"]
+source_file="res://assets/player/swordsmanIdle.png"
+dest_files=["res://.godot/imported/swordsmanIdle.png-ca54ed3634e9813b554a5151df2b3938.ctex"]
 
 [params]
 

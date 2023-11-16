@@ -1,20 +1,20 @@
 extends CharacterBody2D
 
-const WALK_ACCEL = 60
-const WALK_MAX_SPEED = 500
-const RUN_ACCEL = 240
-const RUN_MAX_SPEED = 1200
-const DECEL = 100
-const AIR_DECEL = 30
-const AIRSTRAFE_ACCEL = 60
+const WALK_ACCEL = 60 * 0.3
+const WALK_MAX_SPEED = 500 * 0.3
+const RUN_ACCEL = 240 * 0.3
+const RUN_MAX_SPEED = 1200 * 0.3
+const DECEL = 100 * 0.3
+const AIR_DECEL = 30 * 0.3
+const AIRSTRAFE_ACCEL = 60 * 0.3
 const AIRSTRAFE_MAX_SPEED = RUN_MAX_SPEED
-const JUMP_VELOCITY = -1200.0
-const WALLJUMP_VECTOR = Vector2(800, JUMP_VELOCITY * 0.95)
+const JUMP_VELOCITY = -1200.0 * 0.3
+const WALLJUMP_VECTOR = Vector2(800 * 0.4, JUMP_VELOCITY * 1.2)
 const MAX_JUMPTIME = 8
 const JUMP_GRAVITY_BOOST = 0.5
 const JUMP_MOON_GRAVITY = 0.2
 const WALL_SLIDE_GRAVITY = 0.5
-const WALL_SLIDE_SPEEDCAP = 280
+const WALL_SLIDE_SPEEDCAP = 280 * 0.3
 const MAX_JUMPS = 2
 const FAST_FALL_FACTOR = 8
 const PARRY_SCENE = preload("res://scenes/objects/parry.tscn")
@@ -27,16 +27,10 @@ enum facing_t {
 }
 enum character_action_t {
 	IDLE,
-	AIRDODGE,
+	FASTFALL,
 	DASH,
 	DASH_END,
-	DASH_START,
-	JUMP_LAND,
-	JUMP_RISE,
-	JUMP_APEX,
-	JUMP_FALL,
-	JUMP_SQUAT,
-	WALK
+	JUMP
 }
 
 var jumptime : int = 0
@@ -48,18 +42,123 @@ var curr_action : character_action_t = character_action_t.IDLE
 var is_parrying : bool = false
 var use_parry_mult : bool = false
 var health : int = 20
+var fastfall_mult : float = 1
+var input_locked_from_fastfall : bool = false
+var HITBOXES = []
+
+func _ready():
+	play_idle()
+	$Animations/idleSprites.flip_h = true
+	$Animations/DashSprites.flip_h = true
+	$Animations/AnimPlayer.animation_finished.connect(_on_anim_finish)
+	HITBOXES.append($IdleHitbox)
+
+func make_all_sprites_invisible():
+	$Animations/idleSprites.visible = false
+	$Animations/DashSprites.visible = false
+	$Animations/fsmashSprites.visible = false
+	$Animations/dairSprites.visible = false
+	$Animations/fairSprites.visible = false
+	$Animations/uairSprites.visible = false
+	$Animations/jumpSprites.visible = false
+	$Animations/downpoundSprites.visible = false
+
+func play_idle(stop_last = false):
+	make_all_sprites_invisible()
+	if stop_last:
+		$Animations/AnimPlayer.stop()
+	$Animations/AnimPlayer.play("idleAnim")
+	$Animations/idleSprites.visible = true
+
+func play_down_air(stop_last = false):
+	make_all_sprites_invisible()
+	if stop_last:
+		$Animations/AnimPlayer.stop()
+	$Animations/AnimPlayer.play("dair")
+	$Animations/dairSprites.visible = true
+
+func play_dash(stop_last = false):
+	make_all_sprites_invisible()
+	if stop_last:
+		$Animations/AnimPlayer.stop()
+	$Animations/AnimPlayer.play("dashAnim")
+	$Animations/DashSprites.visible = true
+
+func play_dash_stop(stop_last = false):
+	make_all_sprites_invisible()
+	if stop_last:
+		$Animations/AnimPlayer.stop()
+	$Animations/AnimPlayer.play("dashStopAnim")
+	$Animations/DashSprites.visible = true
+
+func play_fastfall_start(stop_last = false):
+	make_all_sprites_invisible()
+	if stop_last:
+		$Animations/AnimPlayer.stop()
+	$Animations/AnimPlayer.play("downpoundStartup")
+	$Animations/downpoundSprites.visible = true
+
+func play_fastfall_loop(stop_last = false):
+	make_all_sprites_invisible()
+	if stop_last:
+		$Animations/AnimPlayer.stop()
+	$Animations/AnimPlayer.play("downpoundLinger")
+	$Animations/downpoundSprites.visible = true
+
+func play_fastfall_impact(stop_last = false):
+	make_all_sprites_invisible()
+	if stop_last:
+		$Animations/AnimPlayer.stop()
+	$Animations/AnimPlayer.play("downpoundHit")
+	$Animations/downpoundSprites.visible = true
+
+func play_forward_air(stop_last = false):
+	make_all_sprites_invisible()
+	if stop_last:
+		$Animations/AnimPlayer.stop()
+	$Animations/AnimPlayer.play("fair")
+	$Animations/fairSprites.visible = true
+
+func play_forward_smash(stop_last = false):
+	make_all_sprites_invisible()
+	if stop_last:
+		$Animations/AnimPlayer.stop()
+	$Animations/AnimPlayer.play("fsmash")
+	$Animations/fsmashSprites.visible = true
+
+func play_jump(stop_last = false):
+	make_all_sprites_invisible()
+	if stop_last:
+		$Animations/AnimPlayer.stop()
+	$Animations/AnimPlayer.play("jump")
+	$Animations/jumpSprites.visible = true
+
+func _on_anim_finish(animationName):
+	if animationName == "dashStopAnim" or animationName == "downpountHit":
+		play_idle()
+	elif animationName == "downpoundStartup":
+		fastfall_mult = FAST_FALL_FACTOR
+		play_fastfall_loop()
+	elif animationName == "downpoundHit":
+		play_idle()
+		input_locked_from_fastfall = false
 
 # constant 60 fps call rate, delta is constant
 func _physics_process(delta):
-	var x_axis = Input.get_axis("player_left", "player_right")
-	var y_axis = Input.get_axis("player_up", "player_down")
-	var jump_pressed = Input.is_action_just_pressed("player_jump")
-	var jump_held = Input.is_action_pressed("player_jump")
-	var parry_pressed = Input.is_action_just_pressed("player_parry")
+	var x_axis = Input.get_axis("player_left", "player_right") if not input_locked_from_fastfall else 0
+	var y_axis = Input.get_axis("player_up", "player_down") if not input_locked_from_fastfall else 0
+	var jump_pressed = Input.is_action_just_pressed("player_jump") if not input_locked_from_fastfall else false
+	var jump_held = Input.is_action_pressed("player_jump") if not input_locked_from_fastfall else false
+	var parry_pressed = Input.is_action_just_pressed("player_parry") if not input_locked_from_fastfall else false
 	
 	# get facing
+	var last_facing = curr_facing
 	curr_facing = facing_t.RIGHT if x_axis >= 0.1 else curr_facing
 	curr_facing = facing_t.LEFT if x_axis <= -0.1 else curr_facing
+	if (curr_facing != last_facing):
+		$Animations.scale.x *= -1
+		for hitbox in HITBOXES:
+			hitbox.position.x *= 1
 	
 	enhanced_movement(delta, x_axis, y_axis, jump_pressed, jump_held, parry_pressed)
 	
@@ -104,9 +203,13 @@ func _on_hit_by_bullet(damage, bvelocity, bposition):
 
 # main movement processor
 func enhanced_movement(delta, x_axis : float, y_axis : float, jump_pressed : bool, jump_held : bool, parry_pressed : bool):
-	# process base movement
 	var gravity_factor = 1
+	
+	# process base movement
 	if (is_on_floor()):
+		if curr_action == character_action_t.FASTFALL:
+			curr_action = character_action_t.IDLE
+			play_fastfall_impact()
 		air_movement_locked = false
 		curr_jumps = MAX_JUMPS
 		jumptime = 0
@@ -134,6 +237,13 @@ func enhanced_movement(delta, x_axis : float, y_axis : float, jump_pressed : boo
 	if (is_on_wall_via_raycast() and velocity.y > 0 and is_facing_into_colliding_wall(x_axis)):
 		gravity_factor = WALL_SLIDE_GRAVITY
 	
+	# process fastfalling
+	if (Input.is_action_just_pressed("player_fastfall") and is_in_air()):
+		em_fastfall()
+	if (curr_action == character_action_t.FASTFALL):
+		velocity.x *= PARRY_MULT
+		gravity_factor = fastfall_mult
+	
 	# apply gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta * gravity_factor
@@ -155,7 +265,13 @@ func em_grounded_movement(x_axis : float):
 		cap = RUN_MAX_SPEED
 	elif (absf(x_axis) < DEADZONE):
 		velocity = velocity.move_toward(Vector2.ZERO, DECEL)
+		if absf(velocity.x) > 5:
+			play_dash_stop()
+			curr_action = character_action_t.IDLE
 		return
+	
+	curr_action = character_action_t.DASH
+	play_dash()
 	
 	velocity.x += accel * curr_facing
 	if (absf(velocity.x) > cap):
@@ -177,8 +293,6 @@ func em_air_movement(x_axis : float, y_axis : float):
 	elif (not air_movement_locked):
 		velocity.x = velocity.move_toward(Vector2.ZERO, AIR_DECEL).x
 	
-	if (y_axis > FASTFALL_THRESH):
-		return FAST_FALL_FACTOR
 	return 1
 
 # jump and double jump
@@ -187,6 +301,15 @@ func em_jump():
 	curr_jumps -= 1
 	
 	velocity.y = JUMP_VELOCITY
+	play_jump(true)
+
+func em_fastfall():
+	curr_action = character_action_t.FASTFALL
+	play_fastfall_start()
+	fastfall_mult = PARRY_MULT
+	velocity.x *= 0.1
+	velocity.y *= 0.1
+	input_locked_from_fastfall = true
 
 # uses the player scene's raycasts to emulate is_on_wall and is_only_on_wall
 func is_on_wall_via_raycast(only_wall = false):

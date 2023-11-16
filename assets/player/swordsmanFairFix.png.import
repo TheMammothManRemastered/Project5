@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4vrcaukojri3"
-path="res://.godot/imported/wallSprite.png-188981923e88cdc65992b16052bb6ba8.ctex"
+uid="uid://b6t3iswyraweq"
+path="res://.godot/imported/swordsmanFairFix.png-c7c954626e11e87d6b0aca20141fc1d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wallSprite.png"
-dest_files=["res://.godot/imported/wallSprite.png-188981923e88cdc65992b16052bb6ba8.ctex"]
+source_file="res://assets/player/swordsmanFairFix.png"
+dest_files=["res://.godot/imported/swordsmanFairFix.png-c7c954626e11e87d6b0aca20141fc1d8.ctex"]
 
 [params]
 

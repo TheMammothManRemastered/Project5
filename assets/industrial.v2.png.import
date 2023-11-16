@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8dyiceij2oo"
-path="res://.godot/imported/swordsmanDownPoundFixTwo.png-b69b50108344c0ebcadb552d9732ffcc.ctex"
+uid="uid://bf2gjtywbhj1w"
+path="res://.godot/imported/industrial.v2.png-623709b22a2fa36ad7a63e2694483d61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://swordsmanDownPoundFixTwo.png"
-dest_files=["res://.godot/imported/swordsmanDownPoundFixTwo.png-b69b50108344c0ebcadb552d9732ffcc.ctex"]
+source_file="res://assets/industrial.v2.png"
+dest_files=["res://.godot/imported/industrial.v2.png-623709b22a2fa36ad7a63e2694483d61.ctex"]
 
 [params]
 

@@ -22,7 +22,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "CONTROLS:
 A, D, Lstick Left/Right - Horizontal Movement
-S, Lstick Down while in Air - Fast Fall/Ground Slam
+Shift, X Button (xbox) while in Air - Fast Fall/Ground Slam
 Space, A Button (xbox) - Jump
 Lstick into Wall - Wallslide
 Jump while Wallsliding - Wall Jump

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bo3tjesnewkbx"
-path="res://.godot/imported/followerFix.png-f457ebd3f2be58052318b54fcd202149.ctex"
+path="res://.godot/imported/followerFix.png-01a94f3f24eda41fd143674f9078369c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://followerFix.png"
-dest_files=["res://.godot/imported/followerFix.png-f457ebd3f2be58052318b54fcd202149.ctex"]
+source_file="res://assets/followerFix.png"
+dest_files=["res://.godot/imported/followerFix.png-01a94f3f24eda41fd143674f9078369c.ctex"]
 
 [params]
 

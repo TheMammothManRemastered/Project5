@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daa68mj6s6p1u"
-path="res://.godot/imported/groundFive.png-d8160667d4529585c665b8748ab43f56.ctex"
+uid="uid://c71h7nquuenfn"
+path="res://.godot/imported/templateSwordsmanAnimsFix.png-a34f8124b22e071c0def8f04378a40e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://groundFive.png"
-dest_files=["res://.godot/imported/groundFive.png-d8160667d4529585c665b8748ab43f56.ctex"]
+source_file="res://assets/player/templateSwordsmanAnimsFix.png"
+dest_files=["res://.godot/imported/templateSwordsmanAnimsFix.png-a34f8124b22e071c0def8f04378a40e1.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1eb2hcohnpiv"
-path="res://.godot/imported/swordsmanDash.png-ad053fc28021d4a7937369070f50e7d5.ctex"
+uid="uid://d2b88c72c5puq"
+path="res://.godot/imported/flyerFix.png-82d8af55ace43a43b73362e1ff7a3154.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://swordsmanDash.png"
-dest_files=["res://.godot/imported/swordsmanDash.png-ad053fc28021d4a7937369070f50e7d5.ctex"]
+source_file="res://assets/flyerFix.png"
+dest_files=["res://.godot/imported/flyerFix.png-82d8af55ace43a43b73362e1ff7a3154.ctex"]
 
 [params]
 

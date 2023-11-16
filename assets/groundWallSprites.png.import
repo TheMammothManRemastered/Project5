@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beksmv2qukdxg"
-path="res://.godot/imported/groundThree.png-739523e4834ec6f59e556aaa6c4b4810.ctex"
+uid="uid://l8mf1gqseepc"
+path="res://.godot/imported/groundWallSprites.png-e9e2852f2e7f9552a5c683f90720b07c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://groundThree.png"
-dest_files=["res://.godot/imported/groundThree.png-739523e4834ec6f59e556aaa6c4b4810.ctex"]
+source_file="res://assets/groundWallSprites.png"
+dest_files=["res://.godot/imported/groundWallSprites.png-e9e2852f2e7f9552a5c683f90720b07c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ny86w5egn3co"
-path="res://.godot/imported/swordsmanIdleAnimFix.png-b68e7a697355fec67592f9c29444cec1.ctex"
+uid="uid://d07uw3pvm55tv"
+path="res://.godot/imported/anchorFix.png-0936954c8bb1646a13db0118872515da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://swordsmanIdleAnimFix.png"
-dest_files=["res://.godot/imported/swordsmanIdleAnimFix.png-b68e7a697355fec67592f9c29444cec1.ctex"]
+source_file="res://assets/anchorFix.png"
+dest_files=["res://.godot/imported/anchorFix.png-0936954c8bb1646a13db0118872515da.ctex"]
 
 [params]
 

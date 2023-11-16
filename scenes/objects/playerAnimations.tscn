@@ -1,72 +1,13 @@
-[gd_scene load_steps=26 format=3 uid="uid://bjuhyjk7ymcfy"]
+[gd_scene load_steps=21 format=3 uid="uid://cfxvyybym8kyi"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_bl8b8"]
-[ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="2_78lmx"]
-[ext_resource type="PackedScene" uid="uid://dlmepxy2wjkk3" path="res://scenes/objects/hud.tscn" id="3_0snnm"]
-[ext_resource type="Texture2D" uid="uid://dd5kbeubqanos" path="res://assets/player/templateSwordsmanAnimsPossible.png" id="4_wm2va"]
-[ext_resource type="Texture2D" uid="uid://b1eb2hcohnpiv" path="res://assets/player/swordsmanDash.png" id="5_pg8u7"]
-[ext_resource type="Texture2D" uid="uid://ccdwl50hurt1y" path="res://assets/player/swordsmanFsmashFix.png" id="6_fo3jn"]
-[ext_resource type="Texture2D" uid="uid://bwebmtbcyiue6" path="res://assets/player/swordsmanDairFix.png" id="7_k1b5o"]
-[ext_resource type="Texture2D" uid="uid://b6t3iswyraweq" path="res://assets/player/swordsmanFairFix.png" id="8_kffsq"]
-[ext_resource type="Texture2D" uid="uid://dpjmec72chp0c" path="res://assets/player/swordsmanUpAirFix.png" id="9_ufj67"]
-[ext_resource type="Texture2D" uid="uid://cwurv7hdnvpji" path="res://assets/player/swordsmanJumpFix.png" id="10_73xqs"]
-[ext_resource type="Texture2D" uid="uid://8dyiceij2oo" path="res://assets/player/swordsmanDownPoundFixTwo.png" id="11_f1ebu"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3sxq0"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"double_jump",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"fastfall",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_78lmx")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 1.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"in_air",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"land",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"run",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"slide",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"wall_jump",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://dd5kbeubqanos" path="res://assets/player/templateSwordsmanAnimsPossible.png" id="1_r6bvi"]
+[ext_resource type="Texture2D" uid="uid://b1eb2hcohnpiv" path="res://assets/player/swordsmanDash.png" id="2_hofbh"]
+[ext_resource type="Texture2D" uid="uid://ccdwl50hurt1y" path="res://assets/player/swordsmanFsmashFix.png" id="3_8k7nu"]
+[ext_resource type="Texture2D" uid="uid://bwebmtbcyiue6" path="res://assets/player/swordsmanDairFix.png" id="4_ruh1i"]
+[ext_resource type="Texture2D" uid="uid://b6t3iswyraweq" path="res://assets/player/swordsmanFairFix.png" id="5_jx21f"]
+[ext_resource type="Texture2D" uid="uid://dpjmec72chp0c" path="res://assets/player/swordsmanUpAirFix.png" id="6_3oakq"]
+[ext_resource type="Texture2D" uid="uid://cwurv7hdnvpji" path="res://assets/player/swordsmanJumpFix.png" id="7_8mtrx"]
+[ext_resource type="Texture2D" uid="uid://8dyiceij2oo" path="res://assets/player/swordsmanDownPoundFixTwo.png" id="8_gfpoi"]
 
 [sub_resource type="Animation" id="Animation_r4yen"]
 resource_name = "dair"
@@ -428,98 +369,66 @@ _data = {
 "uair": SubResource("Animation_8ikpm")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45jfu"]
-radius = 8.0
-height = 36.0
+[node name="Swordsman" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+sleeping = true
+can_sleep = false
+freeze = true
 
-[node name="Player" type="CharacterBody2D"]
-collision_layer = 128
-collision_mask = 98315
-script = ExtResource("1_bl8b8")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
-scale = Vector2(0.625, 0.625)
-sprite_frames = SubResource("SpriteFrames_3sxq0")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true
-
-[node name="HUD" parent="." instance=ExtResource("3_0snnm")]
-
-[node name="RightWallCast" type="RayCast2D" parent="."]
-target_position = Vector2(18, 0)
-hit_from_inside = true
-
-[node name="LeftWallCast" type="RayCast2D" parent="."]
-target_position = Vector2(-18, 0)
-hit_from_inside = true
-
-[node name="ParrySpawn" type="Node2D" parent="."]
-position = Vector2(18, 0)
-
-[node name="Animations" type="Node2D" parent="."]
-scale = Vector2(0.14, 0.14)
-
-[node name="idleSprites" type="Sprite2D" parent="Animations"]
-position = Vector2(-37.5, -27.5)
-texture = ExtResource("4_wm2va")
+[node name="idleSprites" type="Sprite2D" parent="."]
+texture = ExtResource("1_r6bvi")
+offset = Vector2(10, 0)
 hframes = 6
 vframes = 2
+frame = 1
 region_rect = Rect2(20, 20, 600, 235)
 
-[node name="AnimPlayer" type="AnimationPlayer" parent="Animations"]
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_7ysmn")
 }
 
-[node name="DashSprites" type="Sprite2D" parent="Animations"]
-visible = false
-position = Vector2(-30, -30)
-texture = ExtResource("5_pg8u7")
+[node name="DashSprites" type="Sprite2D" parent="."]
+texture = ExtResource("2_hofbh")
 hframes = 7
 vframes = 2
-frame = 4
+frame = 6
 region_enabled = true
 region_rect = Rect2(0, -39, 1800, 550)
 
-[node name="fsmashSprites" type="Sprite2D" parent="Animations"]
-visible = false
-texture = ExtResource("6_fo3jn")
+[node name="fsmashSprites" type="Sprite2D" parent="."]
+texture = ExtResource("3_8k7nu")
+offset = Vector2(150, 15)
 hframes = 6
 vframes = 2
+frame = 11
 region_enabled = true
 region_rect = Rect2(-40, 0, 2000, 550)
 
-[node name="dairSprites" type="Sprite2D" parent="Animations"]
-visible = false
-texture = ExtResource("7_k1b5o")
+[node name="dairSprites" type="Sprite2D" parent="."]
+texture = ExtResource("4_ruh1i")
 hframes = 3
 vframes = 3
 region_enabled = true
 region_rect = Rect2(23, 0, 835, 850)
 
-[node name="fairSprites" type="Sprite2D" parent="Animations"]
-visible = false
-texture = ExtResource("8_kffsq")
+[node name="fairSprites" type="Sprite2D" parent="."]
+texture = ExtResource("5_jx21f")
+offset = Vector2(-15, -10)
 hframes = 3
 vframes = 3
+frame = 5
 region_enabled = true
 region_rect = Rect2(20, 30, 850, 850)
 
-[node name="uairSprites" type="Sprite2D" parent="Animations"]
-visible = false
-texture = ExtResource("9_ufj67")
+[node name="uairSprites" type="Sprite2D" parent="."]
+texture = ExtResource("6_3oakq")
 hframes = 3
 vframes = 3
 
-[node name="jumpSprites" type="Sprite2D" parent="Animations"]
-visible = false
-position = Vector2(-12.5, -15)
-texture = ExtResource("10_73xqs")
+[node name="jumpSprites" type="Sprite2D" parent="."]
+texture = ExtResource("7_8mtrx")
 offset = Vector2(5, 5)
 hframes = 3
 vframes = 2
@@ -527,16 +436,11 @@ frame = 3
 region_enabled = true
 region_rect = Rect2(20, 0, 450, 500)
 
-[node name="downpoundSprites" type="Sprite2D" parent="Animations"]
-visible = false
-position = Vector2(-87.5, -52.5)
-texture = ExtResource("11_f1ebu")
+[node name="downpoundSprites" type="Sprite2D" parent="."]
+texture = ExtResource("8_gfpoi")
+offset = Vector2(150, -9)
 hframes = 4
 vframes = 3
-frame = 4
+frame = 10
 region_enabled = true
-region_rect = Rect2(-100, 50, 2000, 1000)
-
-[node name="IdleHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
-shape = SubResource("CapsuleShape2D_45jfu")
+region_rect = Rect2(0, 60, 2000, 1000)
