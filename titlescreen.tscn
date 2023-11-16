@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c2lgv3i4npsb5"]
+[gd_scene load_steps=32 format=3 uid="uid://c2lgv3i4npsb5"]
 
 [ext_resource type="Script" path="res://scripts/titlescreen.gd" id="1_ge7f0"]
 [ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="2_mb5ci"]
@@ -10,6 +10,15 @@
 [ext_resource type="Texture2D" uid="uid://dpjmec72chp0c" path="res://swordsmanUpAirFix.png" id="8_l6j2d"]
 [ext_resource type="Texture2D" uid="uid://cwurv7hdnvpji" path="res://swordsmanJumpFix.png" id="9_xlqet"]
 [ext_resource type="Texture2D" uid="uid://8dyiceij2oo" path="res://swordsmanDownPoundFixTwo.png" id="10_38mhv"]
+[ext_resource type="Texture2D" uid="uid://cbc71grl2pe18" path="res://groundOne.png" id="11_rctd2"]
+[ext_resource type="Texture2D" uid="uid://bxkhe0v14be6" path="res://groundTwo.png" id="12_bby3d"]
+[ext_resource type="Texture2D" uid="uid://beksmv2qukdxg" path="res://groundThree.png" id="13_vj0cc"]
+[ext_resource type="Texture2D" uid="uid://fggh0fab7y1k" path="res://groundFour.png" id="14_ldjhr"]
+[ext_resource type="Texture2D" uid="uid://daa68mj6s6p1u" path="res://groundFive.png" id="15_k7ol7"]
+[ext_resource type="Texture2D" uid="uid://b4vrcaukojri3" path="res://wallSprite.png" id="16_nm67d"]
+[ext_resource type="Texture2D" uid="uid://bo3tjesnewkbx" path="res://followerFix.png" id="17_ghin7"]
+[ext_resource type="Texture2D" uid="uid://d07uw3pvm55tv" path="res://anchorFix.png" id="18_tomgs"]
+[ext_resource type="Texture2D" uid="uid://d2b88c72c5puq" path="res://flyerFix.png" id="19_8n1dx"]
 
 [sub_resource type="Animation" id="Animation_rrq7c"]
 resource_name = "idleAnim"
@@ -490,6 +499,48 @@ vframes = 3
 frame = 10
 region_enabled = true
 region_rect = Rect2(0, 60, 2000, 1000)
+
+[node name="GroundOne" type="Sprite2D" parent="Swordsman"]
+visible = false
+texture = ExtResource("11_rctd2")
+
+[node name="GroundTwo" type="Sprite2D" parent="Swordsman"]
+visible = false
+texture = ExtResource("12_bby3d")
+
+[node name="GroundThree" type="Sprite2D" parent="Swordsman"]
+visible = false
+texture = ExtResource("13_vj0cc")
+
+[node name="GroundFour" type="Sprite2D" parent="Swordsman"]
+visible = false
+texture = ExtResource("14_ldjhr")
+
+[node name="GroundFive" type="Sprite2D" parent="Swordsman"]
+visible = false
+texture = ExtResource("15_k7ol7")
+
+[node name="wallOne" type="Sprite2D" parent="Swordsman"]
+visible = false
+texture = ExtResource("16_nm67d")
+
+[node name="Follower" type="RigidBody2D" parent="."]
+
+[node name="followerSprites" type="Sprite2D" parent="Follower"]
+visible = false
+texture = ExtResource("17_ghin7")
+
+[node name="Anchor" type="RigidBody2D" parent="."]
+
+[node name="anchorSprites" type="Sprite2D" parent="Anchor"]
+visible = false
+texture = ExtResource("18_tomgs")
+
+[node name="Flyer" type="RigidBody2D" parent="."]
+
+[node name="flyerSprites" type="Sprite2D" parent="Flyer"]
+visible = false
+texture = ExtResource("19_8n1dx")
 
 [connection signal="pressed" from="Button" to="." method="load_test_level"]
 [connection signal="pressed" from="Button2" to="." method="load_level_one"]
