@@ -391,9 +391,10 @@ libraries = {
 
 [node name="DashSprites" type="Sprite2D" parent="."]
 texture = ExtResource("2_hofbh")
+offset = Vector2(22, 45)
 hframes = 7
 vframes = 2
-frame = 6
+frame = 10
 region_enabled = true
 region_rect = Rect2(0, -39, 1800, 550)
 
