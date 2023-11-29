@@ -45,11 +45,15 @@ var health : int = 20
 var fastfall_mult : float = 1
 var input_locked_from_fastfall : bool = false
 var HITBOXES = []
+var gun_equipped = true
 
 func _ready():
 	play_idle()
 	$Animations/idleSprites.flip_h = true
 	$Animations/DashSprites.flip_h = true
+	$Animations/gunDash.flip_h = true
+	$Animations/gunShot.flip_h = true
+	$Animations/idleGun.flip_h = true
 	$Animations/AnimPlayer.animation_finished.connect(_on_anim_finish)
 	HITBOXES.append($IdleHitbox)
 
@@ -62,13 +66,22 @@ func make_all_sprites_invisible():
 	$Animations/uairSprites.visible = false
 	$Animations/jumpSprites.visible = false
 	$Animations/downpoundSprites.visible = false
+	$Animations/gunDash.visible = false
+	$Animations/gunShot.visible = false
+	$Animations/jumpGun.visible = false
+	$Animations/idleGun.visible = false
+	$Animations/jumpGunShot.visible = false
 
 func play_idle(stop_last = false):
 	make_all_sprites_invisible()
 	if stop_last:
 		$Animations/AnimPlayer.stop()
-	$Animations/AnimPlayer.play("idleAnim")
-	$Animations/idleSprites.visible = true
+	if (gun_equipped):
+		$Animations/AnimPlayer.play("idleGun")
+		$Animations/idleGun.visible = true
+	else:
+		$Animations/AnimPlayer.play("idleAnim")
+		$Animations/idleSprites.visible = true
 
 func play_down_air(stop_last = false):
 	make_all_sprites_invisible()
@@ -81,15 +94,23 @@ func play_dash(stop_last = false):
 	make_all_sprites_invisible()
 	if stop_last:
 		$Animations/AnimPlayer.stop()
-	$Animations/AnimPlayer.play("dashAnim")
-	$Animations/DashSprites.visible = true
+	if (gun_equipped):
+		$Animations/AnimPlayer.play("dashGun")
+		$Animations/gunDash.visible = true
+	else:
+		$Animations/AnimPlayer.play("dashAnim")
+		$Animations/DashSprites.visible = true
 
 func play_dash_stop(stop_last = false):
 	make_all_sprites_invisible()
 	if stop_last:
 		$Animations/AnimPlayer.stop()
-	$Animations/AnimPlayer.play("dashStopAnim")
-	$Animations/DashSprites.visible = true
+	if (gun_equipped):
+		$Animations/AnimPlayer.play("dashGunStop")
+		$Animations/gunDash.visible = true
+	else:
+		$Animations/AnimPlayer.play("dashStopAnim")
+		$Animations/DashSprites.visible = true
 
 func play_fastfall_start(stop_last = false):
 	make_all_sprites_invisible()
@@ -130,11 +151,29 @@ func play_jump(stop_last = false):
 	make_all_sprites_invisible()
 	if stop_last:
 		$Animations/AnimPlayer.stop()
-	$Animations/AnimPlayer.play("jump")
-	$Animations/jumpSprites.visible = true
+	if (gun_equipped):
+		$Animations/AnimPlayer.play("jumpGun")
+		$Animations/jumpGun.visible = true
+	else:
+		$Animations/AnimPlayer.play("jump")
+		$Animations/jumpSprites.visible = true
+
+func play_shoot(stop_last = false):
+	make_all_sprites_invisible()
+	if stop_last:
+		$Animations/AnimPlayer.stop()
+	$Animations/AnimPlayer.play("gunShot")
+	$Animations/gunShot.visible = true
+
+func play_air_shoot(stop_last = false):
+	make_all_sprites_invisible()
+	if stop_last:
+		$Animations/AnimPlayer.stop()
+	$Animations/AnimPlayer.play("jumpGunShoot")
+	$Animations/jumpGunShot.visible = true
 
 func _on_anim_finish(animationName):
-	if animationName == "dashStopAnim" or animationName == "downpountHit":
+	if animationName == "dashStopAnim" or animationName == "downpountHit" or animationName == "dashGunStop" or animationName == "idleGun" or animationName == "idleAnim":
 		play_idle()
 	elif animationName == "downpoundStartup":
 		fastfall_mult = FAST_FALL_FACTOR
@@ -160,6 +199,8 @@ func _physics_process(delta):
 		for hitbox in HITBOXES:
 			hitbox.position.x *= 1
 	
+	swap_weapon()
+	
 	enhanced_movement(delta, x_axis, y_axis, jump_pressed, jump_held, parry_pressed)
 	
 	velocity.x *= PARRY_MULT if use_parry_mult else 1
@@ -169,6 +210,10 @@ func _physics_process(delta):
 		try_parry()
 	
 	move_and_slide()
+
+func swap_weapon():
+	if (Input.is_action_just_pressed("player_scroll")):
+		gun_equipped = not gun_equipped
 
 # attempts to spawn a parry if possible
 func try_parry():
