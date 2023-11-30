@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2lgv3i4npsb5"]
+[gd_scene load_steps=5 format=3 uid="uid://c2lgv3i4npsb5"]
 
 [ext_resource type="Script" path="res://scripts/titlescreen.gd" id="1_ge7f0"]
 [ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="2_mb5ci"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vd4lp"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_o3n80"]
+font_size = 18
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_ge7f0")
@@ -9,30 +15,60 @@ script = ExtResource("1_ge7f0")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Label" type="Label" parent="."]
-offset_left = -84.0
-offset_top = -83.0
-offset_right = 85.0
-offset_bottom = -57.0
-text = "This is the title screen"
+offset_left = -346.0
+offset_top = -191.0
+offset_right = 349.0
+offset_bottom = -101.0
+text = "Speed of Stickman - Swordsman of Destiny"
+label_settings = SubResource("LabelSettings_vd4lp")
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
-offset_left = -160.0
-offset_top = 35.0
-offset_right = 161.0
-offset_bottom = 87.0
-text = "We'll make it nice later"
+offset_left = -362.0
+offset_top = -144.0
+offset_right = 367.0
+offset_bottom = -92.0
+text = "Undefined 2023 Overture Reloaded Revengeance"
+label_settings = SubResource("LabelSettings_o3n80")
 horizontal_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-301, -117)
+position = Vector2(0, 20)
 texture = ExtResource("2_mb5ci")
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 78.0
-offset_top = 228.0
-offset_right = 173.0
-offset_bottom = 259.0
-text = "load example level 1"
+offset_left = -298.0
+offset_top = 152.0
+offset_right = 299.0
+offset_bottom = 183.0
+text = "Click here to Claim your Birthright and Destroy the Dark King of Annihilation"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -120.0
+offset_top = -114.0
+offset_right = 121.0
+offset_bottom = -60.0
+text = "This Time it's Personal"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+offset_left = -295.0
+offset_top = -18.0
+offset_right = -99.0
+offset_bottom = 60.0
+text = "Made using Godot and the Unbelievable Power of a Dying Sun"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 109.0
+offset_top = -30.0
+offset_right = 232.0
+offset_bottom = 74.0
+text = "Made by:
+William Owens
+Tyler Riddle
+Drew Kendziora"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Button2" to="." method="load_level_one"]

@@ -669,34 +669,38 @@ libraries = {
 visible = false
 position = Vector2(-30, -30)
 texture = ExtResource("5_pg8u7")
-offset = Vector2(22, 45)
 hframes = 7
 vframes = 2
-frame = 10
 region_enabled = true
 region_rect = Rect2(0, -39, 1800, 550)
 
 [node name="fsmashSprites" type="Sprite2D" parent="Animations"]
 visible = false
 texture = ExtResource("6_fo3jn")
+offset = Vector2(50, 0)
 hframes = 6
 vframes = 2
+frame = 1
 region_enabled = true
 region_rect = Rect2(-40, 0, 2000, 550)
 
 [node name="dairSprites" type="Sprite2D" parent="Animations"]
 visible = false
 texture = ExtResource("7_k1b5o")
+offset = Vector2(-10, 0)
 hframes = 3
 vframes = 3
+frame = 1
 region_enabled = true
 region_rect = Rect2(23, 0, 835, 850)
 
 [node name="fairSprites" type="Sprite2D" parent="Animations"]
 visible = false
 texture = ExtResource("8_kffsq")
+offset = Vector2(-5, 0)
 hframes = 3
 vframes = 3
+frame = 1
 region_enabled = true
 region_rect = Rect2(20, 30, 850, 850)
 
@@ -710,10 +714,10 @@ vframes = 3
 visible = false
 position = Vector2(-12.5, -15)
 texture = ExtResource("10_73xqs")
-offset = Vector2(5, 5)
+offset = Vector2(-5, 0)
 hframes = 3
 vframes = 2
-frame = 3
+frame = 1
 region_enabled = true
 region_rect = Rect2(20, 0, 450, 500)
 
@@ -729,21 +733,20 @@ region_rect = Rect2(-100, 50, 2000, 1000)
 
 [node name="gunDash" type="Sprite2D" parent="Animations"]
 visible = false
-position = Vector2(-64.2857, 14.2857)
+position = Vector2(-64.2857, 42.8572)
 texture = ExtResource("12_aev4m")
+offset = Vector2(-10, 0)
 hframes = 5
 vframes = 3
-frame = 9
+frame = 1
 region_enabled = true
 region_rect = Rect2(13.21, 67.18, 1674.16, 614.575)
 
 [node name="gunShot" type="Sprite2D" parent="Animations"]
 visible = false
 texture = ExtResource("13_ntbnf")
-offset = Vector2(-11, 6)
 hframes = 2
 vframes = 3
-frame = 2
 region_enabled = true
 region_rect = Rect2(51.35, 0, 801.68, 744.24)
 
@@ -781,8 +784,20 @@ visible = false
 position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_45jfu")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(54, 0)
-collision_mask = 32768
+[node name="Gun" type="Node2D" parent="."]
+
+[node name="Laser" type="Line2D" parent="Gun"]
+visible = false
+points = PackedVector2Array(-15, 0, 700, 0)
+width = 1.0
+default_color = Color(1, 0, 0, 0.321569)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="RayCast2D" type="RayCast2D" parent="Gun"]
+position = Vector2(15, 0)
+target_position = Vector2(300, 0)
+collision_mask = 32769
 hit_from_inside = true
 collide_with_areas = true

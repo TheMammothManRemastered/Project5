@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://djsyodu7h6hcl"]
 
-[ext_resource type="PackedScene" uid="uid://d1dq2m5uc4t7d" path="res://scenes/levels/rooms/roomTemplate.tscn" id="1_mukf8"]
+[ext_resource type="PackedScene" uid="uid://d1dq2m5uc4t7d" path="res://scenes/levels/rooms/RoomTemplate.tscn" id="1_mukf8"]
 [ext_resource type="PackedScene" uid="uid://c1ywll5lg4sb2" path="res://scenes/objects/door.tscn" id="2_mcbgw"]
 [ext_resource type="PackedScene" uid="uid://dl0ueqiuiot8f" path="res://scenes/objects/spawner.tscn" id="3_y4nc4"]
 [ext_resource type="PackedScene" uid="uid://c8vllm0nrd3ej" path="res://scenes/objects/tilemap.tscn" id="4_if4wg"]
@@ -44,12 +44,7 @@ position = Vector2(-14, -4)
 [node name="Sprite2D" parent="Doors/Door2" index="2"]
 visible = false
 
-[node name="Spawner" parent="EnemySpanwers" index="0" instance=ExtResource("3_y4nc4")]
-position = Vector2(258, 166)
-charges = 1
-to_spawn_scenename = "floatGun"
-
-[node name="Spawner2" parent="EnemySpanwers" index="1" instance=ExtResource("3_y4nc4")]
+[node name="Spawner2" parent="EnemySpanwers" index="0" instance=ExtResource("3_y4nc4")]
 position = Vector2(530, 99)
 charges = 1
 to_spawn_scenename = "floatGun"
