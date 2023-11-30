@@ -25,26 +25,6 @@ A, D, Lstick Left/Right - Horizontal Movement
 Shift, X Button (xbox) while in Air - Fast Fall/Ground Slam
 Space, A Button (xbox) - Jump
 Lstick into Wall - Wallslide
-Jump while Wallsliding - Wall Jump
-Q, Y Button (xbox) - Parry"
+Jump while Wallsliding - Wall Jump"
 horizontal_alignment = 2
 vertical_alignment = 2
-
-[node name="Stats" type="VBoxContainer" parent="Container"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Health" type="Label" parent="Container/Stats"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "helt"
-
-[node name="Facing" type="Label" parent="Container/Stats"]
-layout_mode = 2
-text = "tribal tech"
-
-[node name="Parry" type="Label" parent="Container/Stats"]
-layout_mode = 2
-text = "paryy"

@@ -637,6 +637,7 @@ autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+position_smoothing_enabled = true
 
 [node name="HUD" parent="." instance=ExtResource("3_0snnm")]
 

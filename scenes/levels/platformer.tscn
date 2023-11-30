@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqhlgqa4lnjnl"]
+[gd_scene load_steps=7 format=3 uid="uid://bqhlgqa4lnjnl"]
 
 [ext_resource type="PackedScene" uid="uid://ctvlsdqtnt5eg" path="res://scenes/levels/levelTemplate.tscn" id="1_3tjyb"]
 [ext_resource type="PackedScene" uid="uid://dctvtm85hcv3e" path="res://scenes/levels/rooms/tutorialRoom.tscn" id="2_bxc20"]
 [ext_resource type="PackedScene" uid="uid://cq4r4n8psk2nx" path="res://scenes/levels/rooms/deathRoom.tscn" id="3_6dxwg"]
 [ext_resource type="PackedScene" uid="uid://temxxov1t65j" path="res://scenes/levels/rooms/Room1.tscn" id="4_7dyfe"]
 [ext_resource type="PackedScene" uid="uid://djsyodu7h6hcl" path="res://scenes/levels/rooms/roomExample1.tscn" id="5_1pmts"]
+[ext_resource type="PackedScene" uid="uid://b74sv5jye6gm3" path="res://scenes/levels/rooms/room4.tscn" id="6_2rm84"]
 
 [node name="LevelTemplate" instance=ExtResource("1_3tjyb")]
 spawn_room = "res://scenes/levels/rooms/tutorialRoom.tscn"
@@ -18,3 +19,6 @@ position = Vector2(-186.578, -74.5119)
 [node name="Room1" parent="Rooms" index="2" instance=ExtResource("4_7dyfe")]
 
 [node name="roomExample1" parent="Rooms" index="3" instance=ExtResource("5_1pmts")]
+
+[node name="room4" parent="Rooms" index="4" instance=ExtResource("6_2rm84")]
+position = Vector2(517.889, -84.3957)
