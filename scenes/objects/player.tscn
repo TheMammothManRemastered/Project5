@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bjuhyjk7ymcfy"]
+[gd_scene load_steps=39 format=3 uid="uid://bjuhyjk7ymcfy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_bl8b8"]
 [ext_resource type="Texture2D" uid="uid://buiq1u8k7ugi" path="res://assets/icon.svg" id="2_78lmx"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://d25hqkuj57kfy" path="res://assets/player/jumpGun.png" id="14_36o84"]
 [ext_resource type="Texture2D" uid="uid://j2nq3jvuirjw" path="res://assets/player/idleGun.png" id="15_3tq44"]
 [ext_resource type="Texture2D" uid="uid://dcus5f2yauudm" path="res://assets/player/jumpGunShootFix2.png" id="16_mljqk"]
+[ext_resource type="AudioStream" uid="uid://ctvng0nomkneg" path="res://assets/Vine Boom Sound Effect.mp3" id="17_wjt83"]
+[ext_resource type="AudioStream" uid="uid://bdkfcxwujnf7c" path="res://assets/Yippee Meme Sound Effect.mp3" id="18_rhjlp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3sxq0"]
 animations = [{
@@ -800,3 +802,9 @@ target_position = Vector2(300, 0)
 collision_mask = 32769
 hit_from_inside = true
 collide_with_areas = true
+
+[node name="vineboom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_wjt83")
+
+[node name="yippee" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_rhjlp")

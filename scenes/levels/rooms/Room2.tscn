@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmeqx4ixr8ydg"]
+
+[ext_resource type="PackedScene" uid="uid://d1dq2m5uc4t7d" path="res://scenes/levels/rooms/RoomTemplate.tscn" id="1_l1jkt"]
+
+[node name="Room2" instance=ExtResource("1_l1jkt")]
+room_name = "Room2"
+room_ID = 3

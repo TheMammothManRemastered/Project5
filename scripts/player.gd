@@ -45,8 +45,10 @@ var health : int = 20
 var fastfall_mult : float = 1
 var input_locked_from_fastfall : bool = false
 var HITBOXES = []
-var gun_equipped = true
+var gun_equipped = false
 var crd = 0
+@onready var vbp = $vineboom
+@onready var yp = $yippee
 
 func _ready():
 	play_idle()

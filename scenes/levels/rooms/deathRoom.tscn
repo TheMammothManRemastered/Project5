@@ -42,10 +42,10 @@ shape = SubResource("WorldBoundaryShape2D_u2u5f")
 shape = SubResource("WorldBoundaryShape2D_erlr2")
 
 [node name="Label" type="Label" parent="." index="6"]
-offset_left = -80.0
-offset_top = -168.0
-offset_right = 100.0
-offset_bottom = -90.0
+offset_left = -288.0
+offset_top = -104.0
+offset_right = -108.0
+offset_bottom = -26.0
 text = "You have Died
 But not all is lost
 Return To Your Mission"

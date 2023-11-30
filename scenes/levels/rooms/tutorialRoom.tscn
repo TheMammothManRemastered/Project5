@@ -21,7 +21,7 @@ locked = true
 
 [node name="Door" parent="Doors" index="1" instance=ExtResource("2_gxi06")]
 position = Vector2(480, -192)
-target_room_ID = 1
+target_room_ID = 2
 target_door_ID = 0
 
 [node name="PlayerSpawnPoint" parent="." index="3"]

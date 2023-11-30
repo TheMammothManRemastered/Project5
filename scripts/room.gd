@@ -23,6 +23,8 @@ func _ready():
 	
 	connect_to_all_doors()
 	connect_change_level()
+	if (LevelManager.player.crd != 0):
+		LevelManager.player.yp.play()
 	#$Spikes.body_entered.connect(_on_spikes_body_entered)
 
 func connect_to_all_doors():
@@ -44,4 +46,5 @@ func trigger_change_level(body):
 func _on_spikes_body_entered(body):
 	print("spikes touched nya")
 	if body.name == "Player":
+		LevelManager.player.vbp.play()
 		LevelManager.change_room_in_level(0, 0)
