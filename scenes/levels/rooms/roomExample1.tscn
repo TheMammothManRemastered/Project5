@@ -26,9 +26,6 @@ position = Vector2(-60, 2)
 [node name="CollisionShape2D" parent="Doors/Door/Area2D" index="0"]
 position = Vector2(-7, -334)
 
-[node name="Sprite2D" parent="Doors/Door" index="2"]
-visible = false
-
 [node name="Door2" parent="Doors" index="1" instance=ExtResource("2_mcbgw")]
 position = Vector2(-146, 228)
 locked = true
@@ -40,9 +37,6 @@ position = Vector2(48, -4)
 
 [node name="CollisionShape2D" parent="Doors/Door2/Area2D" index="0"]
 position = Vector2(-14, -4)
-
-[node name="Sprite2D" parent="Doors/Door2" index="2"]
-visible = false
 
 [node name="Spawner2" parent="EnemySpanwers" index="0" instance=ExtResource("3_y4nc4")]
 position = Vector2(530, 99)

@@ -105,6 +105,7 @@ player_scroll={
 2d_physics/layer_3="Corpses"
 2d_physics/layer_4="Pickups"
 2d_physics/layer_5="Lava"
+2d_physics/layer_6="Spikes"
 2d_physics/layer_8="Player"
 2d_physics/layer_9="Parry"
 2d_physics/layer_10="Player Weapon"

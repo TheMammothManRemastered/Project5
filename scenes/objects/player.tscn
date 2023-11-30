@@ -623,7 +623,7 @@ height = 36.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 128
-collision_mask = 98315
+collision_mask = 98347
 script = ExtResource("1_bl8b8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -653,7 +653,6 @@ position = Vector2(18, 0)
 scale = Vector2(0.14, 0.14)
 
 [node name="idleSprites" type="Sprite2D" parent="Animations"]
-visible = false
 position = Vector2(-37.5, -27.5)
 texture = ExtResource("4_wm2va")
 hframes = 6

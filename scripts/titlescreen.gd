@@ -5,4 +5,4 @@ func _process(delta):
 	$Icon.rotation_degrees += 1
 
 func load_level_one():
-	LevelManager.load_level("res://scenes/levels/levelExample1.tscn")
+	LevelManager.load_level("res://scenes/levels/platformer.tscn")

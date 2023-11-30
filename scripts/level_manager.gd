@@ -20,10 +20,11 @@ func load_level(lname = "res://scenes/levels/level_ex.tscn"):
 func change_room_in_level(target_room_ID, target_door_ID):
 	print(target_room_ID)
 	var next_room = curr_level_rooms[target_room_ID]
+	player.crd = player.get_parent().room_ID
 	player.get_parent().remove_child(player)
 	curr_spawn_ID = target_door_ID
 	get_tree().change_scene_to_packed(next_room)
 
 func connect_change_level(rorigin):
 	rorigin.change_level.connect(load_level)
-	
+

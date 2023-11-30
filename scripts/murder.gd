@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var advance_rate = 5
+@export var advance_rate = 1
 @export var frozen = false
 @export var time_to_activation = 10
 
@@ -10,6 +10,8 @@ func _ready():
 	
 	if (not frozen):
 		$ActivationTimer.start()
+	
+	frozen = true
 
 func unfreeze():
 	frozen = false
@@ -17,4 +19,9 @@ func unfreeze():
 func _physics_process(delta):
 	if (frozen):
 		return
+	position.x = LevelManager.player.position.x
 	position.y -= advance_rate
+
+func _on_body_entered(body):
+	if body.name == "Player":
+		LevelManager.change_room_in_level(0, 0)

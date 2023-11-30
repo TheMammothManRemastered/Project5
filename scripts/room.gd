@@ -23,6 +23,7 @@ func _ready():
 	
 	connect_to_all_doors()
 	connect_change_level()
+	#$Spikes.body_entered.connect(_on_spikes_body_entered)
 
 func connect_to_all_doors():
 	for door in $Doors.get_children():
@@ -39,3 +40,8 @@ func get_scene_name():
 func trigger_change_level(body):
 	print("trigger hit")
 	change_level.emit("res://scenes/levels/levelExample2.tscn");
+
+func _on_spikes_body_entered(body):
+	print("spikes touched nya")
+	if body.name == "Player":
+		LevelManager.change_room_in_level(0, 0)

@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://cq4r4n8psk2nx"]
+
+[ext_resource type="PackedScene" uid="uid://d1dq2m5uc4t7d" path="res://scenes/levels/rooms/RoomTemplate.tscn" id="1_tivkf"]
+[ext_resource type="Script" path="res://scripts/deathRoom.gd" id="2_4i87w"]
+[ext_resource type="PackedScene" uid="uid://c1ywll5lg4sb2" path="res://scenes/objects/door.tscn" id="2_kwe80"]
+[ext_resource type="PackedScene" uid="uid://c8vllm0nrd3ej" path="res://scenes/objects/tilemap.tscn" id="3_kq3n5"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_chjtf"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u2u5f"]
+normal = Vector2(1, 0)
+distance = -400.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_erlr2"]
+normal = Vector2(-1, 0)
+distance = -376.0
+
+[node name="deathRoom" instance=ExtResource("1_tivkf")]
+script = ExtResource("2_4i87w")
+room_name = "deathRoom"
+room_ID = 0
+
+[node name="Door" parent="Doors" index="0" instance=ExtResource("2_kwe80")]
+position = Vector2(0, -64)
+target_door_ID = 0
+
+[node name="ExitPoint" parent="Doors/Door" index="0"]
+position = Vector2(-296, -40)
+
+[node name="PlayerSpawnPoint" parent="." index="3"]
+position = Vector2(-296, -104)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+shape = SubResource("WorldBoundaryShape2D_chjtf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" index="1"]
+shape = SubResource("WorldBoundaryShape2D_u2u5f")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" index="2"]
+shape = SubResource("WorldBoundaryShape2D_erlr2")
+
+[node name="Label" type="Label" parent="." index="6"]
+offset_left = -80.0
+offset_top = -168.0
+offset_right = 100.0
+offset_bottom = -90.0
+text = "You have Died
+But not all is lost
+Return To Your Mission"
+
+[node name="Tilemap" parent="." index="7" instance=ExtResource("3_kq3n5")]
+layer_0/tile_data = PackedInt32Array(65511, 1572865, 4, 65512, 1179649, 1, 65513, 1179649, 1, 65514, 1179649, 1, 65515, 1179649, 1, 65516, 1179649, 1, 65517, 1179649, 1, 65518, 1179649, 1, 65519, 1179649, 1, 65520, 1179649, 1, 65521, 1179649, 1, 65522, 1179649, 1, 65523, 1179649, 1, 65524, 1179649, 1, 65525, 1179649, 1, 65526, 1179649, 1, 65527, 1179649, 1, 65528, 1179649, 1, 65529, 1179649, 1, 65530, 1179649, 1, 65531, 1179649, 1, 65532, 1179649, 1, 65533, 1179649, 1, 65534, 1179649, 1, 65535, 1179649, 1, 0, 1179649, 1, 1, 1179649, 1, 2, 1179649, 1, 3, 1179649, 1, 4, 1179649, 1, 5, 1179649, 1, 6, 1179649, 1, 7, 1179649, 1, 8, 1179649, 1, 9, 1179649, 1, 10, 1179649, 1, 11, 1179649, 1, 12, 1179649, 1, 13, 1179649, 1, 14, 1179649, 1, 15, 1179649, 1, 16, 1179649, 1, 17, 1179649, 1, 18, 1179649, 1, 19, 1179649, 1, 20, 1179649, 1, 21, 1179649, 1, 22, 1638401, 4, -65513, 1376257, 0, 23, 1376257, 1, -196585, 1376257, 0, -131049, 1376257, 1, -327657, 1376257, 0, -262121, 1376257, 1, -458729, 1376257, 0, -393193, 1376257, 1, -589801, 1376257, 0, -524265, 1376257, 1, -720873, 1376257, 0, -655337, 1376257, 1, -851945, 1376257, 0, -786409, 1376257, 1, -983017, 1376257, 0, -917481, 1376257, 1, 65559, 1376257, 0, 131095, 1376257, 1, 196631, 1376257, 0, 262167, 1376257, 1, 327703, 1376257, 0, 393239, 1376257, 1, 458775, 1376257, 0, 524311, 1376257, 1, 589847, 1376257, 0, 655383, 1376257, 1, 720919, 1376257, 0, 786455, 1376257, 1, -26, 1376257, 0, 65510, 1376257, 1, 131046, 1376257, 0, 196582, 1376257, 1, 262118, 1376257, 0, 327654, 1376257, 1, 393190, 1376257, 0, 458726, 1376257, 1, 524262, 1376257, 0, 589798, 1376257, 1, 655334, 1376257, 0, 720870, 1376257, 1, 786406, 1376257, 0, 851942, 1376257, 1, -131098, 1376257, 0, -65562, 1376257, 1, -262170, 1376257, 0, -196634, 1376257, 1, -393242, 1376257, 0, -327706, 1376257, 1, -524314, 1376257, 0, -458778, 1376257, 1, -655386, 1376257, 0, -589850, 1376257, 1, -786458, 1376257, 0, -720922, 1376257, 1, -917530, 1376257, 0, -851994, 1376257, 1, 65558, 917505, 3, -262145, 655361, 13, -196609, 655361, 14, -327680, 720897, 13, -262144, 720897, 14)
+layer_1/tile_data = PackedInt32Array(-262145, 917505, 16, -196609, 917505, 17, -327680, 983041, 16, -262144, 983041, 17, -327682, 262145, 12, -262146, 262145, 13, -196610, 262145, 14, -131074, 262145, 15, -327681, 327681, 12, -131073, 327681, 15, -393216, 393217, 12, -196608, 393217, 15, -393215, 458753, 12, -327679, 458753, 13, -262143, 458753, 14, -196607, 458753, 15)
+
+[editable path="Doors/Door"]

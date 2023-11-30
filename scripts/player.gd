@@ -46,6 +46,7 @@ var fastfall_mult : float = 1
 var input_locked_from_fastfall : bool = false
 var HITBOXES = []
 var gun_equipped = true
+var crd = 0
 
 func _ready():
 	play_idle()
@@ -245,6 +246,9 @@ func _on_bullet_parried(bullet):
 func _on_hit_by_bullet(damage, bvelocity, bposition):
 	health -= damage
 	# do knockback here if in the air
+
+func _on_death():
+	LevelManager.change_room_in_level(999, 0)
 
 # main movement processor
 func enhanced_movement(delta, x_axis : float, y_axis : float, jump_pressed : bool, jump_held : bool, parry_pressed : bool):
